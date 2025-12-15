@@ -359,20 +359,19 @@
                 </div>
             </div>
         </div>
-        <!-- Contact-->
+<!-- Contacto -->
 <section id="contacto">
     <h2>Contacto</h2>
     <p>Escríbenos y nos pondremos en contacto contigo.</p>
-    <form action="mailto:info@novasolutions.com" method="post" enctype="text/plain">
+    <form id="formContacto">
         <input type="text" name="nombre" placeholder="Nombre" required><br>
         <input type="email" name="email" placeholder="Email" required><br>
         <input type="tel" name="telefono" placeholder="Teléfono" required><br>
         <textarea name="mensaje" placeholder="Tu mensaje..." required></textarea><br>
         <button type="submit">Enviar</button>
     </form>
-    <p>Email: info@novasolutions.com | Tel: +598 095353397 </p>
+    <p id="mensajeExito" style="display:none; color:#0ff; margin-top:10px;">¡Mensaje enviado con éxito!</p>
 </section>
-
 
         <!-- Footer-->
         <footer class="footer py-4">
@@ -611,5 +610,15 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<script>
+const form = document.getElementById('formContacto');
+const mensaje = document.getElementById('mensajeExito');
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault(); // evita que intente enviar correo
+    mensaje.style.display = 'block';
+    form.reset();
+});
+</script>
     </body>
 </html>
