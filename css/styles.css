@@ -11406,3 +11406,45 @@ header.masthead .masthead-subheading {
     background-color: #020617;
     color: #9ca3af;
 }
+
+/* Contacto Dark Theme */
+#contacto {
+    padding: 40px 20px;
+    background-color: #111; /* fondo oscuro */
+    color: #fff; /* texto blanco */
+    text-align: center;
+}
+
+#contacto input,
+#contacto textarea,
+#contacto button {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+}
+
+#contacto input,
+#contacto textarea {
+    background-color: #222; /* inputs oscuros */
+    color: #fff;
+}
+
+#contacto input::placeholder,
+#contacto textarea::placeholder {
+    color: #bbb;
+}
+
+#contacto button {
+    background-color: #0ff; /* botón cyan */
+    color: #111;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#contacto button:hover {
+    background-color: #0aa; /* hover más oscuro */
+}
