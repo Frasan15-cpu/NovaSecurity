@@ -363,7 +363,7 @@
 <section id="contacto">
     <h2>Contacto</h2>
     <p>Escríbenos y nos pondremos en contacto contigo.</p>
-    <form id="formContacto" action="enviar.php" method="POST">
+    <form id="formContacto" action="https://formspree.io/f/mzznwqbq" method="POST">
         <input type="text" name="nombre" placeholder="Nombre" required><br>
         <input type="email" name="email" placeholder="Email" required><br>
         <input type="tel" name="telefono" placeholder="Teléfono" required><br>
@@ -372,6 +372,31 @@
     </form>
     <p id="mensajeExito" style="display:none; color:#0ff; margin-top:10px;">¡Mensaje enviado con éxito!</p>
 </section>
+
+<script>
+const form = document.getElementById('formContacto');
+const mensaje = document.getElementById('mensajeExito');
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault(); // evita recargar la página
+
+    const datos = new FormData(form);
+
+    fetch(form.action, {
+        method: form.method,
+        body: datos,
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(res => {
+        if(res.ok){
+            mensaje.style.display = 'block';
+            form.reset();
+        } else {
+            alert('Ocurrió un error. Intenta de nuevo.');
+        }
+    });
+});
+</script>
 
         <!-- Footer-->
         <footer class="footer py-4">
