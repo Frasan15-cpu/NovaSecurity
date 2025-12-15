@@ -363,7 +363,7 @@
 <section id="contacto">
     <h2>Contacto</h2>
     <p>Escríbenos y nos pondremos en contacto contigo.</p>
-    <form id="formContacto">
+    <form id="formContacto" action="enviar.php" method="POST">
         <input type="text" name="nombre" placeholder="Nombre" required><br>
         <input type="email" name="email" placeholder="Email" required><br>
         <input type="tel" name="telefono" placeholder="Teléfono" required><br>
@@ -615,10 +615,23 @@ const form = document.getElementById('formContacto');
 const mensaje = document.getElementById('mensajeExito');
 
 form.addEventListener('submit', function(e) {
-    e.preventDefault(); // evita que intente enviar correo
-    mensaje.style.display = 'block';
-    form.reset();
+    e.preventDefault(); // evita que recargue la página
+
+    const datos = new FormData(form);
+
+    fetch('enviar.php', {
+        method: 'POST',
+        body: datos
+    })
+    .then(res => res.text())
+    .then(res => {
+        if(res === 'success'){
+            mensaje.style.display = 'block';
+            form.reset();
+        } else {
+            alert('Ocurrió un error. Intenta de nuevo.');
+        }
+    });
 });
 </script>
-    </body>
-</html>
+</body> </html>
